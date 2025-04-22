@@ -2,6 +2,8 @@
 
 ## Transform
 
+![alt text](images/transform.png)
+
 ### 01. hover시 변형
 
 - `transform: scale(2) rotate(15deg);` : 두배로 커짖고 15도로 회전

@@ -1,0 +1,71 @@
+<!-- 다양한 브라우저에서 생기는 문제 해결하기 -->
+<!-- 1. 사파리는 webkit 기반으로 만들어져서 이를 적용해줘야 한다.-->
+<!-- 2. 인터넷 익스플로러는 preserve-3d 가 지원이 안된다-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .world {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80vw;
+        height: 80vh;
+        background: #fff000;
+
+        perspective: 500px;
+      }
+
+      .card-side {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100px;
+        height: 150px;
+        margin: -75px 0 0 -50px; /* 중앙 정렬 맞추기 */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5em;
+        font-size: 1.5rem;
+        transition: 1s;
+
+        /* webkit 접두어 */
+        /* 뒤집혔을 때 원래 면은 안보이게 */
+        -webkit-backface-visibility: hidden;
+        /* 등등 .. */
+        -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        /* 표준 속성 (나중에 쓰기) */
+        backface-visibility: hidden;
+      }
+      .card-side-front {
+        z-index: 1;
+        background: #fff;
+      }
+      .card-side-back {
+        background: red;
+        transform: rotateY(180deg);
+      }
+
+      /* 인터넷 익스플로서 문제 해결 */
+      /* 앞면과 뒷면을 각각 돌린다. */
+      .world:hover .card-side-front {
+        transform: rotateY(180deg);
+      }
+      .world:hover .card-side-back {
+        transform: rotateY(360deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="world">
+      <div class="card-side card-side-front">F</div>
+      <div class="card-side card-side-back">B</div>
+    </div>
+  </body>
+</html>

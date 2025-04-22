@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .world {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80vw; /* viewport width */
+        height: 80vh; /* viewport height */
+        background: #fff000;
+
+        /* 원근감 속성: 3D 공간으로 변화시키기 */
+        /* perspective: 500px; */
+      }
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 150px;
+        margin: 1em;
+        border-radius: 0.5em; /* 자기 자신 또는 부모의 font-size에 비례하게 */
+        font-size: 1.5rem; /* 항상 루트요소 html의 폰트 크기를 기준으로 계산 */
+        background: red;
+
+        /* 카드 회전시키기 */
+        transform: perspective(500px) rotateY(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="world">
+      <div class="card">CARD</div>
+      <div class="card">CARD</div>
+      <div class="card">CARD</div>
+    </div>
+  </body>
+</html>
